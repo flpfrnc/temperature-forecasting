@@ -3,6 +3,7 @@ import requests
 import json
 import datetime
 from dateutil import tz
+import requests
 
 def dashboard(request):
     json_data = requests.get('https://thingspeak.com/channels/196384/feed.json').text
@@ -31,5 +32,23 @@ def dashboard(request):
         air_pressure.append(value_ap)
         humidity.append(value_h)
     
-    context = { "data" :  leitura, "outdoor": str(outdoor_temp),  "temperature" : str(temp), "air_pressure" : str(air_pressure), "humidity": str(humidity) }          
-    return render(request, 'index.html', {'contextos' : context})
+    context = { "data" :  leitura, "outdoor": str(outdoor_temp),  "temperature" : str(temp), "air_pressure" : str(air_pressure), "humidity": str(humidity) }      
+    request.session["context"] = context    
+    return render(request, 'pages/dashboard.html', {'contextos' : context})
+
+def temperature(request):
+    context = request.session.get('context')
+    return render(request, 'pages/temperature.html', {'contextos' : context})
+
+def humidity(request):
+    context = request.session.get('context')
+    return render(request, 'pages/humidity.html', {'contextos' : context})
+
+def out_temp(request):
+    context = request.session.get('context')
+    return render(request, 'pages/out_temp.html', {'contextos' : context})
+
+def pressure(request):
+    context = request.session.get('context')
+    return render(request, 'pages/pressure.html', {'contextos' : context})
+
