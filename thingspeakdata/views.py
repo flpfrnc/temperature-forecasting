@@ -23,6 +23,7 @@ def dashboard(request):
     json_loaded = json.loads(json_data)
     local_zone = tz.gettz("America/Fortaleza")
     context = {}
+    
 
     dados = json_loaded["feeds"]
     leitura = list()
