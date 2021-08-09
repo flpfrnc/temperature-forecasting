@@ -1,3 +1,11 @@
 {% extends 'pages/dashboard.html' %}{% block out_temp %}
-<div class="milimetros-container"><div id="milimetros"></div></div>
+<div style="display: flex;">
+    <div class="milimetros-container">    
+        <div id="milimetros"></div>
+    </div>
+    <div>
+        <img src="{% static 'images/fig1out.png' %}" alt="">
+        <img src="{% static 'images/fig2out.png' %}" alt="">
+    </div>
+</div>
 {% endblock %}
