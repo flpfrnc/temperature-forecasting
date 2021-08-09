@@ -1,11 +1,11 @@
 {% extends 'pages/dashboard.html' %}{% block out_temp %}
-<div style="display: flex;">
-    <div class="milimetros-container">    
-        <div id="milimetros"></div>
+{% load static %}
+<div style="display: flex; flex-direction: column;">
+    <div class="milimetros-container"><div id="milimetros"></div></div>
+    <div style="display: flex; flex-direction: column; justify-content: center">
+        <div style="width: 100%; text-align: center"><h2 style="margin-top: 2rem; margin-bottom: 2rem;">Predictions</h1></div>
+        <img src="{% static 'images/fig1out.png' %}" alt="graph1" width="600px" height="400px">
+        <img src="{% static 'images/fig2out.png' %}" alt="graph2" width="600px">
     </div>
-    <div>
-        <img src="{% static 'images/fig1out.png' %}" alt="">
-        <img src="{% static 'images/fig2out.png' %}" alt="">
     </div>
-</div>
 {% endblock %}

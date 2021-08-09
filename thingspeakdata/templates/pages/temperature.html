@@ -1,9 +1,11 @@
 {% extends 'pages/dashboard.html' %}{% block temperature %}
-<div style="display: flex;">
+{% load static %}
+<div style="display: flex; flex-direction: column;">
 <div class="temperature-container"><div id="temperatura"></div></div>
-<div>
-    <img src="{% static 'images/fig1in.png' %}" alt="">
-    <img src="{% static 'images/fig2in.png' %}" alt="">
+<div style="display: flex; flex-direction: column; justify-content: center">
+    <div style="width: 100%; text-align: center"><h2 style="margin-top: 2rem; margin-bottom: 2rem;">Predictions</h1></div>
+    <img src="{% static 'images/fig1in.png' %}" alt="graph1" width="600px" height="400px">
+    <img src="{% static 'images/fig2in.png' %}" alt="graph2" width="600px">
 </div>
 </div>
 {% endblock %}

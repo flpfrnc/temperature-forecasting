@@ -35,14 +35,23 @@ body {
       .wrapper .sidebar .menu .options {
         list-style: none; }
         .wrapper .sidebar .menu .options li {
-          margin-top: 1.5rem;
-          margin-bottom: 1.5rem;
+          margin: 0;
           display: flex;
           justify-content: center;
-          align-items: center; }
+          align-items: center;
+          border-top: 0.1px solid white; }
+          .wrapper .sidebar .menu .options li:hover {
+            background-color: #5e1a9e; }
+          .wrapper .sidebar .menu .options li:last-child {
+            border-bottom: 0.1px solid white; }
           .wrapper .sidebar .menu .options li a {
             text-decoration: none;
-            color: white; }
+            color: white;
+            padding-left: 5rem;
+            padding-right: 5rem;
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+            width: fit-content; }
   .wrapper .container-wrapper {
     width: 100%;
     height: 100%;
@@ -102,5 +111,8 @@ body {
         height: fit-content; }
       .wrapper .container-wrapper .data #pressao {
         margin: 2px; }
+
+.active {
+  background-color: #5e1a9e; }
 
 /*# sourceMappingURL=styles.css.map */

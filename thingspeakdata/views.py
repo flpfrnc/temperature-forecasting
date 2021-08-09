@@ -17,6 +17,7 @@ from fbprophet import Prophet
 from fbprophet.plot import add_changepoints_to_plot
 import schedule
 import time
+import threading
 
 
 def dashboard(request):    
@@ -77,6 +78,25 @@ def hours2timing(x):
     else:
         timing = 'X'
     return timing
+
+
+def temperature(request):
+    context = request.session.get('context')       
+    
+    return render(request, 'pages/temperature.html', {'contextos' : context})
+
+def humidity(request):
+    context = request.session.get('context')
+    return render(request, 'pages/humidity.html', {'contextos' : context})
+
+def out_temp(request):
+    context = request.session.get('context')
+    return render(request, 'pages/out_temp.html', {'contextos' : context})
+
+def pressure(request):
+    context = request.session.get('context')
+    return render(request, 'pages/pressure.html', {'contextos' : context})
+
 
 def predict():
     json_data = requests.get('https://thingspeak.com/channels/196384/feed.json').text
@@ -305,7 +325,6 @@ def predict():
 
         # predict the future temperature
         prophe_result = m.predict(future)
-        print(prophe_result)
         # plot prediction
         fig1 = m.plot(prophe_result)
         if place == 'In':
@@ -317,6 +336,8 @@ def predict():
         ax.set_xlabel("Time", size=15)
         ax.set_ylabel("Temperature", size=15)
         a = add_changepoints_to_plot(ax, m, prophe_result)
+        print(ax)
+        print(ax.plot())
         fig1.show()
         # plot decomposed timse-series components
         if plot_comp:
@@ -330,29 +351,6 @@ def predict():
     run_prophet('In', 30)
     run_prophet('Out', 30)
 
-def temperature(request):
-    context = request.session.get('context')   
-    
-    return render(request, 'pages/temperature.html', {'contextos' : context})
 
+threading.Timer(5, predict).start()
 
-def humidity(request):
-    context = request.session.get('context')
-  #  schedule.every(1).minutes.do(read_data)
-    return render(request, 'pages/humidity.html', {'contextos' : context})
-
-def out_temp(request):
-    context = request.session.get('context')
-   # schedule.every(1).minutes.do(read_data)
-    return render(request, 'pages/out_temp.html', {'contextos' : context})
-
-def pressure(request):
-    context = request.session.get('context')
-    #schedule.every(1).minutes.do(read_data)
-    return render(request, 'pages/pressure.html', {'contextos' : context})
-
-schedule.every(5).minutes.do(predict)
-
-while True:
-    schedule.run_pending()
-    time.sleep(1)
