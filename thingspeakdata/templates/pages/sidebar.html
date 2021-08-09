@@ -1,0 +1,14 @@
+{% extends 'index.html' %}
+{% block sidebar %}
+      <div class="sidebar">
+        <div class="menu">
+          <div class="home"><a href="/">Dashboard</a></div>
+          <ul class="options">
+            <li class="link-parent"><a id="toggle-link" href="/temperature">Temperature</a></li>
+            <li class="link-parent"><a id="toggle-link" href="/out_temp">Outdoor Temperature</a></li>
+            <li class="link-parent"><a id="toggle-link" href="/humidity">Humidity</a></li>
+            <li class="link-parent"><a id="toggle-link" href="/pressure">Air Pressure</a></li>
+          </ul>
+        </div>
+      </div>
+      {% endblock %}

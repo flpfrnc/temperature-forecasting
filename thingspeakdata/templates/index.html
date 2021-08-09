@@ -26,6 +26,7 @@
   </head>
   <body>
     <div class="wrapper">
+      {% block sidebar %} {% endblock %}
       {% block dashboard %} {% endblock %}
       <div class="footer"></div>
     </div>
@@ -39,11 +40,11 @@
       crossorigin="anonymous"
     ></script>
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-    <script>      
-      $(document).ready(function() {
-        $(".link-parent a").on("click", function() {
-            $(".link-parent").removeClass('active');
-            $(this).addClass("active");
+    <script>
+      $(function() {
+      $("#toggle-link").on("click", function() {
+          $(".link-parent").removeClass('active');
+          $(this).addClass("active");
         });
       });
     </script>
