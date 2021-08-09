@@ -65,6 +65,7 @@ rjsmin==1.1.0
 schedule==1.1.0
 scikit-learn==0.24.2
 scipy==1.7.1
+gunicorn
 service-identity==21.1.0
 setuptools-git==1.2
 six==1.16.0
