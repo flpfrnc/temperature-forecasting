@@ -16,6 +16,7 @@ cryptography==3.4.7
 cycler==0.10.0
 Cython==0.29.24
 daphne==3.0.2
+psycopg2-binary==2.9.1
 dj-database-url==0.5.0
 Django==3.2.6
 django-appconf==1.0.4
